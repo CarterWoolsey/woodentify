@@ -14,7 +14,7 @@ import sys
 
 if __name__ == '__main__':
     img_rows, img_cols = 50, 50 # input image dimensions
-    folder_list = ['imgs/rockler_bubinga', 'imgs/rockler_cherry', 'imgs/cs_sycamore']
+    folder_list = ['imgs/rockler_bubinga', 'imgs/rockler_cherry', 'imgs/cs_sycamore', 'pine_douglas_fir_home_depot']
     X, y = prep_total_pipeline(folder_list, img_rows)
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
