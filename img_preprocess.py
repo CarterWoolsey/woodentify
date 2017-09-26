@@ -9,14 +9,12 @@ def load_image_folder(filepath, limit=None):
     print(onlyfiles)
     if limit != None:
         num_files = limit
-        print('num_files:{}'.format(num_files))
     else:
         num_files = len(onlyfiles)
     images = np.empty(num_files, dtype=object)
     for n in range(0, num_files):
       images[n] = cv2.resize(cv2.imread(join(filepath,onlyfiles[n])), (1008, 756))
       images[n] = cv2.cvtColor(images[n], cv2.COLOR_BGR2RGB)
-    print(images)
     return images
 
 def crop_image(image, size):
