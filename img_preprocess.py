@@ -4,13 +4,19 @@ import numpy as np
 from os.path import isfile, join
 from os import listdir
 
-def load_image_folder(filepath):
+def load_image_folder(filepath, limit=None):
     onlyfiles = [f for f in listdir(filepath) if isfile(join(filepath,f)) and '.jpg' in f]
     print(onlyfiles)
-    images = np.empty(len(onlyfiles), dtype=object)
-    for n in range(0, len(onlyfiles)):
+    if limit != None:
+        num_files = limit
+        print('num_files:{}'.format(num_files))
+    else:
+        num_files = len(onlyfiles)
+    images = np.empty(num_files, dtype=object)
+    for n in range(0, num_files):
       images[n] = cv2.resize(cv2.imread(join(filepath,onlyfiles[n])), (1008, 756))
       images[n] = cv2.cvtColor(images[n], cv2.COLOR_BGR2RGB)
+    print(images)
     return images
 
 def crop_image(image, size):
@@ -82,11 +88,14 @@ def prep_pipeline(folder, size):
     rot_crop = rotate_images_4x(cropped)
     return mirror_images(rot_crop)
 
-def prep_total_pipeline(folder_list, size):
+def prep_total_pipeline(folder_list, size, limit=None):
     X = 0
     y = 0
     for i in range(len(folder_list)):
-        images = load_image_folder(folder_list[i])
+        if limit == None:
+            images = load_image_folder(folder_list[i])
+        else:
+            images = load_image_folder(folder_list[i], limit)
         cropped = crop_image_list(images, size)
         rot_crop = rotate_images_4x(cropped)
         mirrored = mirror_images(rot_crop)

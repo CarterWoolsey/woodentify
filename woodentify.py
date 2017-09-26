@@ -14,8 +14,8 @@ import sys
 
 if __name__ == '__main__':
     img_rows, img_cols = 50, 50 # input image dimensions
-    folder_list = ['imgs/rockler_bubinga', 'imgs/rockler_cherry', 'imgs/cs_sycamore', 'pine_douglas_fir_home_depot']
-    X, y = prep_total_pipeline(folder_list, img_rows)
+    folder_list = ['imgs/rockler_bubinga', 'imgs/rockler_cherry', 'imgs/cs_sycamore', 'imgs/pine_douglas_fir_home_depot']
+    X, y = prep_total_pipeline(folder_list, img_rows, limit=2)
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -23,10 +23,10 @@ if __name__ == '__main__':
     num_classes = len(folder_list)
     num_epochs = 4
 
-    nb_filters = 10 # number of convolutional filters to use
-    pool_size = (5, 5) # size of pooling area for max pooling
+    nb_filters = 32 # number of convolutional filters to use
+    pool_size = (2, 2) # size of pooling area for max pooling
     # decreases image size, and helps to avoid overfitting
-    kernel_size = (10, 10) # slides over image to learn features
+    # kernel_size = (, ) # slides over image to learn features
 
     # reshape image for Keras, note that image_dim_ordering set in ~.keras/keras.json
     # don't change any of this
@@ -59,12 +59,21 @@ if __name__ == '__main__':
     # see https://keras.io/activations/
     # and https://en.wikipedia.org/wiki/Activation_function
     # options: 'linear', 'sigmoid', 'tanh', 'relu', 'softplus', 'softsign'
+    #
+    # model.add(Conv2D(nb_filters, (kernel_size[0], kernel_size[1]),
+    #                     padding='valid',
+    #                     input_shape=input_shape)) #first conv. layer (keep layer)
 
-    model.add(Conv2D(nb_filters, (kernel_size[0], kernel_size[1]),
+
+    model.add(Conv2D(nb_filters, (5, 5),
                         padding='valid',
-                        input_shape=input_shape)) #first conv. layer (keep layer)
-    model.add(Activation('tanh')) # Activation specification necessary for Conv2D and Dense layers
+                        input_shape=input_shape))
+    model.add(Activation('relu')) # Activation specification necessary for Conv2D and Dense layers
 
+    model.add(Conv2D(nb_filters, (3,3)))
+    model.add(Activation('relu'))
+    model.add(Conv2D(nb_filters, (2,2)))
+    model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=pool_size)) # decreases size, helps prevent overfitting
     model.add(Dropout(0.5)) # zeros out some fraction of inputs, helps prevent overfitting
 
@@ -72,13 +81,13 @@ if __name__ == '__main__':
     print('Model flattened out to ', model.output_shape)
 
     # now start a typical neural network
-    model.add(Dense(640)) # (only) 32 neurons in this layer, really?  (keep layer)
-    model.add(Activation('relu'))
-    model.add(Dropout(0.5)) # zeros out some fraction of inputs, helps prevent overfitting
+    # model.add(Dense(640)) # (only) 32 neurons in this layer, really?  (keep layer)
+    # model.add(Activation('relu'))
+    # model.add(Dropout(0.5)) # zeros out some fraction of inputs, helps prevent overfitting
 
-    model.add(Dense(320))
-    model.add(Activation('relu'))
-    model.add(Dropout(0.5))
+    model.add(Dense(128))
+    model.add(Activation('tanh'))
+    model.add(Dropout(0.15))
 
     model.add(Dense(num_classes)) # 10 final nodes (one for each class) (keep layer)
     model.add(Activation('softmax')) # keep softmax at end to pick between classes 0-9
