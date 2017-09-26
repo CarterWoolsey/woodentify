@@ -1,8 +1,17 @@
 import cv2
 from matplotlib import pyplot as plt
 import numpy as np
-import time as t
+from os.path import isfile, join
+from os import listdir
 
+def load_image_folder(filepath):
+    onlyfiles = [f for f in listdir(filepath) if isfile(join(filepath,f)) and '.jpg' in f]
+    print(onlyfiles)
+    images = np.empty(len(onlyfiles), dtype=object)
+    for n in range(0, len(onlyfiles)):
+      images[n] = cv2.resize(cv2.imread(join(filepath,onlyfiles[n])), (1008, 756))
+      images[n] = cv2.cvtColor(images[n], cv2.COLOR_BGR2RGB)
+    return images
 
 def crop_image(image, size):
     image_list = []
@@ -33,6 +42,14 @@ def crop_image(image, size):
 
     return image_list
 
+def crop_image_list(image_list, size):
+    new_image_list = []
+    for i in image_list:
+        cropped_images = crop_image(i, size)
+        for j in cropped_images:
+            new_image_list.append(j)
+    return new_image_list
+
 def rotate_images_4x(image_list):
     new_image_list = []
 
@@ -55,10 +72,38 @@ def mirror_images(image_list):
         new_image_list.append(img)
     return new_image_list
 
-
 def save_images(image_list):
     for i in range(len(image_list)):
         cv2.imwrite('test_images/img_{}.jpg'.format(i), image_list[i])
+
+def prep_pipeline(folder, size):
+    images = load_image_folder(folder)
+    cropped = crop_image_list(images, size)
+    rot_crop = rotate_images_4x(cropped)
+    return mirror_images(rot_crop)
+
+def prep_total_pipeline(folder_list, size):
+    X = 0
+    y = 0
+    for i in range(len(folder_list)):
+        images = load_image_folder(folder_list[i])
+        cropped = crop_image_list(images, size)
+        rot_crop = rotate_images_4x(cropped)
+        mirrored = mirror_images(rot_crop)
+        if type(X) == int:
+            X = np.array(mirrored)
+        else:
+            X = np.vstack((X, np.array(mirrored)))
+        if type(y) == int:
+            y = np.zeros(len(mirrored))
+        else:
+            y_arr = np.zeros(len(mirrored))
+            y_arr.fill(i)
+            y = np.append(y, y_arr)
+        print('X shape: {} -=-=-=-= y shape: {}'.format(X.shape, y.shape))
+    return np.array(X), y
+
+
 
 if __name__ == '__main__':
     PATH = "maroon_bells.jpg"

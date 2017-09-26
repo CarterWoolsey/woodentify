@@ -9,12 +9,13 @@ Woodentify seeks to identify wood species using Convolutional Neural Networks tr
 4. [Training The Model](#training-the-model)
 5. [Results](#results)
 6. [Future Improvements](#future-improvements)
+7. [Technology Stack](#technology-stack)
 
 ## Dataset
 
 The original intent was to scrape images off the web, but initial testing of that method revealed that a great deal of those images are mislabeled, or have other characteristics (like watermarks, or overlaid text descriptors of the photo) which would require manual cleanup.  It turns out that it's much easier to find boards and slabs of wood to take high resolution images of at area wood shops.
 
-The photos themselves are edge grain shots of woods of various types.  I've started with a few classes to make sure that the model can distinguish the grains and gradually added classes in as I get the model better-tuned.
+The photos themselves are edge grain shots of woods of various types.  I've started with a few classes to make sure that the model can distinguish the grains and am gradually adding classes in as I get the model better-tuned.
 
 ## Image Processing
 
@@ -45,3 +46,5 @@ So far I've gotten 98% accuracy with two initial classes and 78% accuracy with t
 ## Future Improvements
 
 With a great deal more data, this model could continue to grow in predictive power.  Ideally I would like to get the class set to the 10-15 types of wood most commonly used in American carpentry.  The end goal would be a web app where a user can upload an image of wood they're looking at and get an accurate prediction on its species.
+
+## Technology Stack

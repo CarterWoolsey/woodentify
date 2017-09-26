@@ -2,7 +2,6 @@ import cv2
 from matplotlib import pyplot as plt
 import numpy as np
 from img_preprocess import *
-from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Convolution2D, MaxPooling2D
@@ -15,18 +14,13 @@ import sys
 
 if __name__ == '__main__':
     img_rows, img_cols = 50, 50 # input image dimensions
-    bubinga = prep_pipeline('imgs/rockler_bubinga', img_rows)
-    cherry = prep_pipeline('imgs/rockler_cherry', img_rows)
-    bubinga_arr = np.array(bubinga)
-    cherry_arr = np.array(cherry)
-    X = np.vstack((np.array(bubinga), np.array(cherry)))
-    #gonna convert these to be more flexible for more classes using np.fill
-    y = np.hstack((np.zeros((len(bubinga),), dtype=np.int), np.ones((len(cherry),), dtype=np.int)))
+    folder_list = ['imgs/rockler_bubinga', 'imgs/rockler_cherry', 'imgs/cs_sycamore']
+    X, y = prep_total_pipeline(folder_list, img_rows)
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     batch_size = 100
-    num_classes = 2
+    num_classes = len(folder_list)
     num_epochs = 4
 
     nb_filters = 10 # number of convolutional filters to use
