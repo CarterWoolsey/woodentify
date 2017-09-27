@@ -6,11 +6,14 @@ from os import listdir
 
 def load_image_folder(filepath, limit=None):
     onlyfiles = [f for f in listdir(filepath) if isfile(join(filepath,f)) and '.jpg' in f]
-    print(onlyfiles)
+    print(filepath)
+    print('Num pics in folder: {}'.format(len(onlyfiles)))
     if limit != None:
         num_files = limit
+        print('Only {} images being used'.format(num_files))
     else:
         num_files = len(onlyfiles)
+        print('All images being used')
     images = np.empty(num_files, dtype=object)
     for n in range(0, num_files):
       images[n] = cv2.resize(cv2.imread(join(filepath,onlyfiles[n])), (1008, 756))
