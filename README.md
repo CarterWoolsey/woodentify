@@ -27,21 +27,37 @@ In order to expand the dataset I have to work with, I've built a pre-processing 
 
 In the end, you multiply each image in the dataset by 8n, with n being the number of images you can subset the original image into based on the size of the crop.
 
-Example image of processing results
+Original image                     |  Cropped image
+:-------------------------:|:-------------------------:
+<img src="imgs/readme/orig_bubinga_resized.jpg" width="500" height="393"/>  | <img src="imgs/readme/cropped_to_150px.jpg" height="150"/>
+
+Once cropped, the images are then rotated and mirrored.
+
+<img src="imgs/readme/final_0.jpg" height="100"/>  | <img src="imgs/readme/final_1.jpg" height="100"/>
+| <img src="imgs/readme/final_4.jpg" height="100"/>  | <img src="imgs/readme/final_5.jpg" height="100"/>
+
+<img src="imgs/readme/final_2.jpg" height="100"/>  | <img src="imgs/readme/final_3.jpg" height="100"/>
+| <img src="imgs/readme/final_6.jpg" height="100"/>  | <img src="imgs/readme/final_7.jpg" height="100"/>
+
 
 ## Model Architecture
 
-Image of Model Architecture
+All of these pre-processed images are fed into a sequential model that runs as follows:
 
-Here I'll put a description of the Neural Net once I have it tuned and working efficiently
+* Three convolutional layers with 'relu' activation functions.
+* A max pooling layer
+* Data is then flattened to be fed into typical neural net structure
+* Neural net has two dense layers with a 'tanh' and finally a 'softmax' activation.
+* Compiled with the 'adam' optimizer
+
 
 ## Training the Model
 
-I've used Keras to create the model and am going to use an AWS EC2 instance of a p2.xlarge computer to run and tune the model.
+With the sheer number of images being fed into the model, it quickly becomes difficult to train locally.  I launched an EC2 instance on AWS with a powerful GPU to help cut down the time it took to train so that I could experiment and tune the parameters of the model
 
 ## Results
 
-So far I've gotten 98% accuracy with two initial classes and 78% accuracy with three.
+With four classes of wood (Pine, Sycamore, Cherry, & Bubinga), I was able to achieve 97.44% accuracy running the model through ten epochs.
 
 ## Future Improvements
 
