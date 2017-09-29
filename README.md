@@ -46,7 +46,6 @@ All of these pre-processed images are fed into a sequential model that runs as f
 
 * Three convolutional layers with 'relu' activation functions.
 * A max pooling layer
-* Data is then flattened to be fed into typical neural net structure
 * Neural net has two dense layers with a 'tanh' and finally a 'softmax' activation.
 * Compiled with the 'adam' optimizer
 
