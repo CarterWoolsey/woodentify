@@ -57,7 +57,7 @@ With the sheer number of images being fed into the model, it quickly becomes dif
 
 ## Results
 
-With four classes of wood (Pine, Sycamore, Cherry, & Bubinga), I was able to achieve 97.44% accuracy running the model through ten epochs.
+With four classes of wood (Pine, Sycamore, Cherry, & Bubinga), I was able to achieve 97.4% test accuracy running the model through ten epochs.  I had 84,480 training samples and 21,120 validation samples.   
 
 ## Future Improvements
 
