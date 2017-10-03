@@ -66,11 +66,9 @@ With the sheer number of images being fed into the model, it quickly becomes dif
 
 With four classes of wood (Pine, Sycamore, Cherry, & Bubinga), I was able to achieve 97.4% test accuracy running the model through ten epochs.  I had 84,480 training samples and 21,120 validation samples.
 
-<img src="imgs/pine_douglas_fir_home_depot/20170920_203629.jpg" height="200"/>
-<img src="imgs/cs_sycamore/20170925_151106.jpg" height="200"/>
+<img src="imgs/pine_douglas_fir_home_depot/20170920_203629.jpg" height="200"/><img src="imgs/cs_sycamore/20170925_151106.jpg" height="200"/>
 
-<img src="imgs/rockler_cherry/20170923_162941.jpg" height="200"/>
-<img src="imgs/rockler_bubinga/20170923_163051.jpg" height="200"/>
+<img src="imgs/rockler_cherry/20170923_162941.jpg" height="200"/><img src="imgs/rockler_bubinga/20170923_163051.jpg" height="200"/>
 
 ## Future Improvements
 
