@@ -1,4 +1,4 @@
-<img src="imgs/header.png" height="200"/>
+<img src="imgs/header.png" height="150"/>
 
 Woodentify seeks to identify wood species using Convolutional Neural Networks trained on imagery of wood grain
 
@@ -9,7 +9,6 @@ Woodentify seeks to identify wood species using Convolutional Neural Networks tr
 4. [Training The Model](#training-the-model)
 5. [Results](#results)
 6. [Future Improvements](#future-improvements)
-7. [Technology Stack](#technology-stack)
 
 ## Dataset
 
@@ -59,15 +58,22 @@ All of these pre-processed images are fed into a sequential model that runs as f
 * Neural net has two dense layers with a 'tanh' and finally a 'softmax' activation.
 * Compiled with the 'adam' optimizer
 
-
 ## Training the Model
 
-With the sheer number of images being fed into the model, it quickly becomes difficult to train locally.  I launched an EC2 instance on AWS with a powerful GPU to help cut down the time it took to train so that I could experiment and tune the parameters of the model.
+With the sheer number of images being fed into the model, it quickly becomes difficult to train locally.  I launched an EC2 instance on AWS with a powerful GPU to help cut down the time it took to train so that I could experiment and tune the parameters of the model with greater speed.
 
 ## Results
 
-With four classes of wood (Pine, Sycamore, Cherry, & Bubinga), I was able to achieve 97.4% test accuracy running the model through ten epochs.  I had 84,480 training samples and 21,120 validation samples.   
+With four classes of wood (Pine, Sycamore, Cherry, & Bubinga), I was able to achieve 97.4% test accuracy running the model through ten epochs.  I had 84,480 training samples and 21,120 validation samples.
+
+<img src="imgs/pine_douglas_fir_home_depot/20170920_203629.jpg" height="200"/>
+<img src="imgs/cs_sycamore/20170925_151106.jpg" height="200"/>
+
+<img src="imgs/rockler_cherry/20170923_162941.jpg" height="200"/>
+<img src="imgs/rockler_bubinga/20170923_163051.jpg" height="200"/>
 
 ## Future Improvements
 
-With a great deal more data, this model could continue to grow in predictive power.  Ideally I would like to get the class set to the 10-15 types of wood most commonly used in American carpentry.  The end goal would be a web app where a user can upload an image of wood they're looking at and get an accurate prediction on its species.
+With a great deal more data, this model could continue to grow in predictive power.  Ideally I would like to get the class set to the 10 types of wood most commonly used in American carpentry.  The end goal would be a web app where a user can upload an image of wood they're looking at and get an accurate prediction on its species.
+
+By far the hardest part of doing this would be the data collection.  Because of the sheer amount of variety one sees in wood grain of even one type of species, a great deal of imagery would be required to achieve any sort of accuracy, which would then require substantial computing power.
