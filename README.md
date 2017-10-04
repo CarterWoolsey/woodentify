@@ -9,6 +9,7 @@ Woodentify seeks to identify wood species using Convolutional Neural Networks tr
 4. [Training The Model](#training-the-model)
 5. [Results](#results)
 6. [Future Improvements](#future-improvements)
+7. [Technology Stack](#technology-stack)
 
 ## Dataset
 
@@ -58,7 +59,7 @@ All of these pre-processed images are fed into a sequential model that runs as f
 * Neural net has two dense layers with a 'tanh' and finally a 'softmax' activation.
 * Compiled with the 'adam' optimizer
 
-<img src="imgs/readme/cnn_model.png" height="180"/>
+<img src="imgs/readme/cnn_model2.png" height="180"/>
 
 ## Training the Model
 
@@ -79,3 +80,10 @@ Cherry                     |  Bubinga
 With a great deal more data, this model could continue to grow in predictive power.  Ideally I would like to get the class set to the 10 types of wood most commonly used in American carpentry.  The end goal would be a web app where a user can upload an image of wood they're looking at and get an accurate prediction on its species.
 
 By far the hardest part of doing this would be the data collection.  Because of the sheer amount of variety one sees in wood grain of even one type of species, a great deal of imagery would be required to achieve any sort of accuracy, which would then require substantial computing power.
+
+## Technology Stack
+<img src="imgs/readme/keras.png" height="100" width="150"/>-=-
+<img src="imgs/readme/theano.jpeg" height="100"/>-=-
+<img src="imgs/readme/opencv.png" height="100"/>-=-
+<img src="imgs/readme/numpy.jpg" height="100" width="150"/>-=-
+<img src="imgs/readme/sklearn.png" height="100"/>
