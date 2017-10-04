@@ -82,4 +82,4 @@ With a great deal more data, this model could continue to grow in predictive pow
 By far the hardest part of doing this would be the data collection.  Because of the sheer amount of variety one sees in wood grain of even one type of species, a great deal of imagery would be required to achieve any sort of accuracy, which would then require substantial computing power.
 
 ## Technology Stack
-<img src="imgs/readme/python.png" height="100"/> <img src="imgs/readme/keras.png" height="100" width="150"/> <img src="imgs/readme/theano.jpeg" height="100"/> <img src="imgs/readme/opencv.png" height="100"/> <img src="imgs/readme/numpy.jpg" height="100" width="150"/> <img src="imgs/readme/sklearn.png" height="100"/> <img src="imgs/readme/aws.png" height="150"/>
+<img src="imgs/readme/python.png" height="100"/> <img src="imgs/readme/keras.png" height="100" width="150"/> <img src="imgs/readme/theano.jpeg" height="100"/> <img src="imgs/readme/opencv.png" height="100"/> <img src="imgs/readme/numpy.jpg" height="100" width="150"/> <img src="imgs/readme/sklearn.png" height="100"/> <img src="imgs/readme/aws.png" height="100"/>
