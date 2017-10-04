@@ -16,14 +16,14 @@ The original intent was to scrape images off the web, but initial testing of tha
 
 The photos themselves are edge grain shots of woods of various types.  I've started with a few classes to make sure that the model can distinguish the grains and am gradually adding classes in as I get the model better-tuned.
 
-One issue that was unforeseen, and that I learned more about the more time I spent in woodshops, was that the manner of cutting the wood is very important for how the grain appears.  The three most common ways that trees are processed is that they are plainsawn, quartersawn, or riftsawn, as seen here.
+One issue that was unforeseen, and that I learned more about the more time I spent in woodshops, was that the manner of cutting the wood is very important for how the grain appears.  The most common ways that trees are processed is that they are plainsawn or quartersawn as seen here.
 
-<img src="imgs/readme/quartersawn.jpg" height="250"/>
+<img src="imgs/readme/quartersawn.png" height="250"/>
 
-The problem here is that a great deal of variability in the appearance of wood grain can appear even within one species.  Plainsawn wood, in particular, commonly has a pattern called Cathedral Grain where the grain appears in long arches that vaguely resemble those of a cathedral.
+The problem here is that a great deal of variability in the appearance of wood grain can appear even within one species.  Plainsawn wood, in particular, commonly has a pattern called Cathedral Grain where the grain appears in long arches that vaguely resemble those of a cathedral.  This effect is caused by the fact that the slab cuts across the the grain with a great deal of variation in the grain direction.
 
-<img src="imgs/readme/cathedral_grain.jpg" height="200"/>
-
+<figure><img src="imgs/readme/cathedral_cropped.png" height="300"/><figcaption>The Cathedral Effect</figcaption></figure>  
+</p>
 For this reason I tried to avoid taking pictures of wood with particularly prominent features and stick to samples with straight grain.
 
 ## Image Processing
@@ -66,7 +66,9 @@ With the sheer number of images being fed into the model, it quickly becomes dif
 
 ## Results
 
-With four classes of wood (Pine, Sycamore, Cherry, & Bubinga), I was able to achieve 97.4% test accuracy running the model through ten epochs.  I had 84,480 training samples and 21,120 validation samples.
+With four classes of wood, I was able to achieve 97.4% test accuracy running the model through ten epochs.  I had 84,480 training samples and 21,120 validation samples.
+
+Species in clockwise order: Pine, Sycamore, Bubinga, & Cherry
 
 <img src="imgs/pine_douglas_fir_home_depot/20170920_203629.jpg" height="200"/> <img src="imgs/cs_sycamore/20170925_151106.jpg" height="200"/>
 
