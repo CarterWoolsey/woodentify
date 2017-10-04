@@ -31,11 +31,11 @@ For this reason I tried to avoid taking pictures of wood with particularly promi
 
 In order to expand the dataset I have to work with, I've built a pre-processing pipeline that works through a number of steps to modify and replicate the images in such a way that they'll provide new value to the model.
 
-1. The images are cropped into square subsets at a certain length/width of pixels, input as a parameter.  For example a 1000 x 1000 image will be split into 100 subset images if you choose a crop size of 100.
+1. The images are cropped into square subsets at a certain length/width of pixels, input as a parameter.  In my case, each image I processed yielded 300 subcrops
 2. Then these cropped images are rotated 90 degrees, three separate times - this effectively multiplied your cropped image set by 4
-3. Finally, the rotated/cropped images are mirrored, adding an additional 2x multiplier to our image set.
+3. Finally, the rotated/cropped images are mirrored, adding an additional 2x multiplier to our image set
 
-In the end, you multiply each image in the dataset by 8n, with n being the number of images you can subset the original image into based on the size of the crop.
+In the end, you multiply each image in the dataset by 2400 (300 * 4 * 2).
 
 Original image                     |  Cropped image
 :-------------------------:|:-------------------------:
@@ -82,4 +82,4 @@ With a great deal more data, this model could continue to grow in predictive pow
 By far the hardest part of doing this would be the data collection.  Because of the sheer amount of variety one sees in wood grain of even one type of species, a great deal of imagery would be required to achieve any sort of accuracy, which would then require substantial computing power.
 
 ## Technology Stack
-<img src="imgs/readme/python.png" height="100"/> <img src="imgs/readme/keras.png" height="100" width="150"/> <img src="imgs/readme/theano.jpeg" height="100"/> <img src="imgs/readme/opencv.png" height="100"/> <img src="imgs/readme/numpy.jpg" height="100" width="150"/> <img src="imgs/readme/sklearn.png" height="100"/>
+<img src="imgs/readme/python.png" height="100"/> <img src="imgs/readme/keras.png" height="100" width="150"/> <img src="imgs/readme/theano.jpeg" height="100"/> <img src="imgs/readme/opencv.png" height="100"/> <img src="imgs/readme/numpy.jpg" height="100" width="150"/> <img src="imgs/readme/sklearn.png" height="100"/> <img src="imgs/readme/aws.png" height="150"/>
