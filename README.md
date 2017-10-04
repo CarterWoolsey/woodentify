@@ -70,9 +70,11 @@ With four classes of wood, I was able to achieve 97.4% test accuracy running the
 
 Species in clockwise order: Pine, Sycamore, Bubinga, & Cherry
 
-<img src="imgs/pine_douglas_fir_home_depot/20170920_203629.jpg" height="200"/> <img src="imgs/cs_sycamore/20170925_151106.jpg" height="200"/>
-
-<img src="imgs/rockler_cherry/20170923_162941.jpg" height="200"/> <img src="imgs/rockler_bubinga/20170923_163051.jpg" height="200"/>
+Pine                     |  Sycamore
+:-------------------------:|:-------------------------:
+<img src="imgs/pine_douglas_fir_home_depot/20170920_203629.jpg" height="200"/> | <img src="imgs/cs_sycamore/20170925_151106.jpg" height="200"/>
+Cherry                     |  Bubinga
+<img src="imgs/rockler_cherry/20170923_162941.jpg" height="200"/> | <img src="imgs/rockler_bubinga/20170923_163051.jpg" height="200"/>
 
 ## Future Improvements
 
