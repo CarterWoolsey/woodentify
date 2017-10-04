@@ -1,4 +1,4 @@
-<img src="imgs/header.png" height="150"/>
+<img src="imgs/readme/banner.png" height="150"/>
 
 Woodentify seeks to identify wood species using Convolutional Neural Networks trained on imagery of wood grain
 
@@ -18,11 +18,11 @@ The photos themselves are edge grain shots of woods of various types.  I've star
 
 One issue that was unforeseen, and that I learned more about the more time I spent in woodshops, was that the manner of cutting the wood is very important for how the grain appears.  The three most common ways that trees are processed is that they are plainsawn, quartersawn, or riftsawn, as seen here.
 
-<img src="imgs/quartersawn.jpg" height="250"/>
+<img src="imgs/readme/quartersawn.jpg" height="250"/>
 
 The problem here is that a great deal of variability in the appearance of wood grain can appear even within one species.  Plainsawn wood, in particular, commonly has a pattern called Cathedral Grain where the grain appears in long arches that vaguely resemble those of a cathedral.
 
-<img src="imgs/cathedral_grain.jpg" height="200"/>
+<img src="imgs/readme/cathedral_grain.jpg" height="200"/>
 
 For this reason I tried to avoid taking pictures of wood with particularly prominent features and stick to samples with straight grain.
 
@@ -38,15 +38,15 @@ In the end, you multiply each image in the dataset by 8n, with n being the numbe
 
 Original image                     |  Cropped image
 :-------------------------:|:-------------------------:
-<img src="imgs/readme/orig_bubinga_resized.jpg" width="500" height="393"/>  | <img src="imgs/readme/cropped_to_150px.jpg" height="150"/>
+<img src="imgs/readme/orig_bubinga_resized.jpg" width="300"/>  | <img src="imgs/readme/cropped_to_150px.jpg" height="150"/>
 
 Once cropped, the images are then rotated and mirrored.
 
-<img src="imgs/readme/final_0.jpg" height="100"/>  | <img src="imgs/readme/final_1.jpg" height="100"/>
-| <img src="imgs/readme/final_4.jpg" height="100"/>  | <img src="imgs/readme/final_5.jpg" height="100"/>
+<img src="imgs/readme/final_0.jpg" height="120"/>  | <img src="imgs/readme/final_1.jpg" height="120"/>
+| <img src="imgs/readme/final_4.jpg" height="120"/>  | <img src="imgs/readme/final_5.jpg" height="120"/>
 
-<img src="imgs/readme/final_2.jpg" height="100"/>  | <img src="imgs/readme/final_3.jpg" height="100"/>
-| <img src="imgs/readme/final_6.jpg" height="100"/>  | <img src="imgs/readme/final_7.jpg" height="100"/>
+<img src="imgs/readme/final_2.jpg" height="120"/>  | <img src="imgs/readme/final_3.jpg" height="120"/>
+| <img src="imgs/readme/final_6.jpg" height="120"/>  | <img src="imgs/readme/final_7.jpg" height="120"/>
 
 
 ## Model Architecture
@@ -58,6 +58,8 @@ All of these pre-processed images are fed into a sequential model that runs as f
 * Neural net has two dense layers with a 'tanh' and finally a 'softmax' activation.
 * Compiled with the 'adam' optimizer
 
+<img src="imgs/readme/cnn_model.png" height="180"/>
+
 ## Training the Model
 
 With the sheer number of images being fed into the model, it quickly becomes difficult to train locally.  I launched an EC2 instance on AWS with a powerful GPU to help cut down the time it took to train so that I could experiment and tune the parameters of the model with greater speed.
@@ -66,9 +68,9 @@ With the sheer number of images being fed into the model, it quickly becomes dif
 
 With four classes of wood (Pine, Sycamore, Cherry, & Bubinga), I was able to achieve 97.4% test accuracy running the model through ten epochs.  I had 84,480 training samples and 21,120 validation samples.
 
-<img src="imgs/pine_douglas_fir_home_depot/20170920_203629.jpg" height="200"/><img src="imgs/cs_sycamore/20170925_151106.jpg" height="200"/>
+<img src="imgs/pine_douglas_fir_home_depot/20170920_203629.jpg" height="200"/> <img src="imgs/cs_sycamore/20170925_151106.jpg" height="200"/>
 
-<img src="imgs/rockler_cherry/20170923_162941.jpg" height="200"/><img src="imgs/rockler_bubinga/20170923_163051.jpg" height="200"/>
+<img src="imgs/rockler_cherry/20170923_162941.jpg" height="200"/> <img src="imgs/rockler_bubinga/20170923_163051.jpg" height="200"/>
 
 ## Future Improvements
 
