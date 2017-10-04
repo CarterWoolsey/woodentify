@@ -68,8 +68,6 @@ With the sheer number of images being fed into the model, it quickly becomes dif
 
 With four classes of wood, I was able to achieve 97.4% test accuracy running the model through ten epochs.  I had 84,480 training samples and 21,120 validation samples.
 
-Species in clockwise order: Pine, Sycamore, Bubinga, & Cherry
-
 Pine                     |  Sycamore
 :-------------------------:|:-------------------------:
 <img src="imgs/pine_douglas_fir_home_depot/20170920_203629.jpg" height="200"/> | <img src="imgs/cs_sycamore/20170925_151106.jpg" height="200"/>
